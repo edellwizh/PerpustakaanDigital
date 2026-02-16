@@ -1,4 +1,4 @@
-@extends('sidebar.admin') {{-- Mengambil kerangka utama --}}
+@extends('sidebar.html') {{-- Mengambil kerangka utama --}}
 
 @section('title', 'Data Buku')
 
@@ -6,7 +6,7 @@
         <div class="container-fluid">
           <h2 class="judul-h2">Daftar Buku</h2>   
           
-          <button type="button" class="btn">Lihat Kategori</button>
+          <a href="{{ url('/admin/kategori') }}" class="btn"> Kategori </a>
           <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Buku</button>
            
           <table class="table">

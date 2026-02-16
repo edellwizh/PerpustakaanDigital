@@ -12,7 +12,8 @@ class KategoriBukuController extends Controller
      */
     public function index()
     {
-        //
+        $kategori = KategoriBuku::all();
+        return view('admin.kategori.index', compact('kategori'));
     }
 
     /**
@@ -28,7 +29,13 @@ class KategoriBukuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+            'deskripsi' => 'nullable'
+        ]);
+
+        KategoriBuku::create($request->all());
+        return back()->with('succes', 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -50,16 +57,25 @@ class KategoriBukuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KategoriBuku $kategoriBuku)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+            'deskripsi' => 'nullable'
+        ]);
+
+        $kategori = KategoriBuku::findOrFail($id);
+        $kategori->update($request->all());
+
+        return back()->with('success', 'Kategori berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KategoriBuku $kategoriBuku)
+    public function destroy($id)
     {
-        //
+        KategoriBuku::findOrFail($id)->delete();
+        return back()->with('success', 'Kategori berhasil dihapus');
     }
 }

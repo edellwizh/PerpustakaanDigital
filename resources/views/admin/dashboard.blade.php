@@ -1,4 +1,4 @@
-@extends('sidebar.admin') {{-- Mengambil kerangka utama --}}
+@extends('sidebar.html') {{-- Mengambil kerangka utama --}}
 
 @section('title', 'Dashboard')
 

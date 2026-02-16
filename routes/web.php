@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KategoriBukuController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,8 +19,8 @@ Route::post('/daftar', [AuthController::class, 'storeDaftar']);
 #############################################
 # USER
 #############################################
-Route::middleware(['auth', 'user-acces:user'])->prefix('user')->group(function(){
-Route::get('/dashboard', [AuthController::class, 'showDashboard']);
+Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(){
+
 
 
 });
@@ -27,6 +28,14 @@ Route::get('/dashboard', [AuthController::class, 'showDashboard']);
 #############################################
 # ADMIN
 #############################################
-Route::middleware(['auth', 'user-acces:admin'])->prefix('admin')->group(function(){
+Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(function(){
+
+## KATEGORI #####################
+Route::get('/kategori', [KategoriBukuController::class, 'index']);
+Route::post('/kategori', [KategoriBukuController::class, 'store']);
+Route::put('/kategori/{id}', [KategoriBukuController::class, 'update']);
+Route::delete('/kategori/{id}', [KategoriBukuController::class, 'destroy']);
+## KATEGORI #####################
+
 
 });

@@ -29,7 +29,7 @@ class AuthController extends Controller
 
             // Logika pengalihan berdasarkan Role
             if (Auth::user()->role === 'admin') {
-                return view('admin.index');
+                return view('admin.dashboard');
             }
             return view('user.katalog_buku');
         }
@@ -70,10 +70,5 @@ class AuthController extends Controller
         User::create($validated);
 
         return back()->with('success', 'Pendaftaran berhasil. Silakan login.');
-    }
-
-    public function showDashboard()
-    {
-        return view('user.katalog_buku');
     }
 }
