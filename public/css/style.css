@@ -1,0 +1,58 @@
+/* Kaatalog Buku */
+.main-content {
+    background-color: beige;
+    flex-grow: 1;
+}
+.card {
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.card-item{
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    gap: 50px;
+}
+.card-warna{
+    background-color: #e74c3c;
+    color: #fff;
+    border: 2px solid #344334;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* BOX SHADOW */
+    transition: transform 0.3s;
+}
+.card-warna:hover {
+    transform: translateY(-10px); /* Efek sedikit melayang saat disentuh kursor */
+}
+
+/* Memastikan link di dalam card merah tetap terlihat (putih) */
+.card-warna .card-link {
+    color: #ffcccc;
+    text-decoration: underline;
+}
+.btn{
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    background-color: #e74c3c;
+}
+.main-content .judul-h2{
+    color: #fff;   
+    padding: 20px;
+    font-size: 30px;
+    background-color: #344334;
+ 
+}
+
+/* Index admin */
+.isi{
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: repeat(3, 25rem); 
+    gap: 20px;
+}
+.isi .warna{
+    background-color: #e74c3c;
+    color: #fff;
+    border: 2px solid #344334;
+}

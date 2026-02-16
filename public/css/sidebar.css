@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container_css {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins';
+}
+
+.sidebar_css{
+    background-color: #344334;
+    width: 260px;
+    padding: 24px;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+/* .sidebar_css .judul {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 1.2; 
+    text-align: center;
+    color: #000;
+    display: block;
+} */
+
+.sidebar_css a {
+    text-decoration: none;
+    width: 100%; 
+}
+
+/* BAGIAN PERBAIKAN: RATAIN JUDUL PERPUSTAKAAN DENGAN LOGO */
+.sidebar_css .header_css .list-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    padding: 10px 20px;
+    background-color: beige;
+    min-height: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 8px hsla(0, 0%, 100%, 0.775); 
+}
+
+.sidebar_css .main .list-item .judul-navbar  {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 16px;
+    color: #fff;
+    transition: color 0.2s; 
+}
+
+/* BAGIAN PERBAIKAN: RATAIN ANTARA sidebar_css.sidebar_css DENGAN ICON */
+.sidebar_css .main .list-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    padding: 12px 10px;
+    border-radius: 8px;
+    /* background: hsl(120, 33%, 45%); */
+    width: 100%; 
+    box-sizing: border-box;
+    transition: all ease-in .2s;
+}
+
+/* PEMISAHAN WARNA UNTUK LOGOUT DAN SIDEBAR */
+.sidebar_css .main .list-item.btn-logout{
+    background: #c0392b ;
+}
+
+.sidebar_css .main .list-item .icon {
+    margin-right: 12px;
+    font-size: 20px;
+    color: #fff;
+}
+
+
+.sidebar_css .main .list-item:hover {
+    background: beige;
+    color: #344334; 
+}
+.sidebar_css .list-item.btn-logout:hover {
+    background: #e74c3c; 
+    transition: 0.3s;
+}
+/* Memastikan teks ikut berubah warna saat di-hover */
+.sidebar_css .main .list-item:hover .judul-navbar {
+    color: #344334;
+}
+.sidebar_css .main .list-item:hover .icon {
+    color: #344334;
+}
+
+.garis {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Garis putih transparan */
+    margin: 30px 0; /* Jarak atas dan bawah garis */
+}
+
+/* Kaatalog Buku */
+.main-content {
+    background-color: beige;
+    flex-grow: 1;
+}
+.card {
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.card-item{
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    gap: 50px;
+}
+.card-warna{
+    background-color: #e74c3c;
+    color: #fff;
+    border: 2px solid #344334;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* BOX SHADOW */
+    transition: transform 0.3s;
+}
+.card-warna:hover {
+    transform: translateY(-10px); /* Efek sedikit melayang saat disentuh kursor */
+}
+
+/* Memastikan link di dalam card merah tetap terlihat (putih) */
+.card-warna .card-link {
+    color: #ffcccc;
+    text-decoration: underline;
+}
+
