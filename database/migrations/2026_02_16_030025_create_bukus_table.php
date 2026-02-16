@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_kategori');
             $table->string('judul');
             $table->string('penerbit');
-            $table->integer('tahun_penerbit'); 
+            $table->date('tahun_penerbit'); 
             $table->integer('stok');
             $table->text('deskripsi')->nullable();
             $table->timestamps();

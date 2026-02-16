@@ -8,7 +8,7 @@
         <div class="container-fluid">
           <h2 class="judul-h2">Daftar Kategori</h2>   
           
-          <button type="button" class="btn">Lihat Buku</button>
+          <a href="{{ url('/admin/buku') }}" class="btn"> Lihat buku </a>
           <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah Kategori</button>           
           
           @include('sidebar.pesan_sukses')

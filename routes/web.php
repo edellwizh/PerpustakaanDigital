@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriBukuController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,5 +38,10 @@ Route::put('/kategori/{id}', [KategoriBukuController::class, 'update']);
 Route::delete('/kategori/{id}', [KategoriBukuController::class, 'destroy']);
 ## KATEGORI #####################
 
-
+## BUKU #####################
+Route::get('/buku', [BukuController::class, 'index']);
+Route::post('/buku', [BukuController::class, 'store']);
+Route::put('/buku/{id}', [BukuController::class, 'update']);
+Route::delete('/buku/{id}', [BukuController::class, 'destroy']);
+## BUKU #####################
 });

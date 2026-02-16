@@ -17,7 +17,7 @@
 
             <div class="main">
                 <div class="list-item">
-                    <a href="#">
+                    <a href="{{ url('/admin/buku') }}">
                         <i class="bi bi-book icon"></i>
                         <span class="judul-navbar">Data Buku</span>
                     </a>
