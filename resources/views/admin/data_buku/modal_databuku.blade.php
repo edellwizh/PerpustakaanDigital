@@ -1,3 +1,4 @@
+<!-- TAMBAH BUKU -->
 <div class="modal fade" id="modalTambah" tabindex="-1">
     <div class="modal-dialog">
         <form action="{{ url('admin/buku') }}" method="POST" class="modal-content">
@@ -34,7 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control"></textarea>
+                    <textarea name="deskripsi" class="form-control" required></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -44,6 +45,7 @@
     </div>
 </div>
 
+<!-- EDIT  BUKU -->
 <div class="modal fade" id="modalEdit" tabindex="-1">
     <div class="modal-dialog">
         <form id="formEdit" method="POST" class="modal-content">

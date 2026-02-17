@@ -35,7 +35,7 @@ class KategoriBukuController extends Controller
         ]);
 
         KategoriBuku::create($request->all());
-        return back()->with('succes', 'Kategori berhasil ditambahkan');
+        return back()->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**

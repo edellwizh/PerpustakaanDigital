@@ -64,7 +64,7 @@ $(document).ready(function() {
         const judul = $(this).data('judul'); 
         const id_kategori = $(this).data('id_kategori');
         const penerbit = $(this).data('penerbit');
-        const tahun = $(this).data('tahun_penerbit');
+        const tahun_penerbit = $(this).data('tahun_penerbit');
         const stok = $(this).data('stok');
         const deskripsi = $(this).data('deskripsi');
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
         $('#edit_judul').val(judul);
         $('#edit_id_kategori').val(id_kategori);
         $('#edit_penerbit').val(penerbit);
-        $('#edit_tahun_penerbit').val(tahun);
+        $('#edit_tahun_penerbit').val(tahun_penerbit);
         $('#edit_stok').val(stok);
         $('#edit_deskripsi').val(deskripsi);
 

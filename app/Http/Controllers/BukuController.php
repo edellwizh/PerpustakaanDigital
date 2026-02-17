@@ -40,7 +40,7 @@ class BukuController extends Controller
         ]);
 
         Buku::create($request->all());
-        return back()->with('succes', 'Buku berhasil ditambahkan');
+        return back()->with('success', 'Buku berhasil ditambahkan');
     }
 
     /**
@@ -75,7 +75,7 @@ class BukuController extends Controller
 
         $buku = Buku::findOrFail($id);
         $buku->update($request->all());
-        return back()->with('succes', "Buku berhasil diperbarui");
+        return back()->with('success', "Buku berhasil diperbarui");
     }
 
     /**
@@ -84,6 +84,6 @@ class BukuController extends Controller
     public function destroy($id)
     {
         Buku::findOrFail($id)->delete();
-        return back()->with('succes', 'Buku berhasil dihapus');
+        return back()->with('success', 'Buku berhasil dihapus');
     }
 }

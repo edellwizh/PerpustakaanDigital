@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Buku; 
+use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,7 +31,7 @@ class AuthController extends Controller
 
             // Logika pengalihan berdasarkan Role
             if (Auth::user()->role === 'admin') {
-                return view('admin.dashboard');
+                return redirect('/admin/dashboard');
             }
             return view('user.katalog_buku');
         }
@@ -71,4 +73,49 @@ class AuthController extends Controller
 
         return back()->with('success', 'Pendaftaran berhasil. Silakan login.');
     }
+
+
+    public function showAnggota()
+    {
+        $users = User::where('role', 'user')->get();
+        return view('admin.data_anggota.index', compact('users'));
+    }
+
+    public function updateAnggota(Request $request, $id)
+{
+    $request->validate([
+        'email'   => 'required|email|unique:users,email,'.$id.',id_user',
+        'name'    => 'required',
+        'nis'     => 'required|unique:users,nis,'.$id.',id_user',
+        'no_telp' => 'required',
+        'jurusan' => 'required', 
+    ]);
+
+    $user = User::findOrFail($id);
+    $user->update($request->all());
+
+    return back()->with('success', "Anggota " . $user->name . " berhasil diperbarui");
+
 }
+    public function destroyAnggota($id)
+    {
+        User::findOrFail($id)->delete();
+        return back()->with('success', 'User berhasil dihapus');
+    }
+
+    public function showDashboard()
+{
+    // Mengambil data riil dari database
+    $totalBuku = Buku::count();
+    $totalAnggota = User::where('role', 'user')->count();
+    $bukuDipinjam = Peminjaman::where('status', 'dipinjam')->count();
+
+    return view('admin.dashboard', compact('totalBuku', 'totalAnggota', 'bukuDipinjam'));
+}
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    }

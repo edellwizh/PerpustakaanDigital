@@ -16,7 +16,7 @@ Route::post('/login', [AuthController::class, 'storeLogin']);
 Route::get('/daftar', [AuthController::class, 'showDaftar']);
 Route::post('/daftar', [AuthController::class, 'storeDaftar']);
 
-
+Route::post('/logout', [AuthController::class, 'logout']);
 #############################################
 # USER
 #############################################
@@ -31,6 +31,9 @@ Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(
 #############################################
 Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(function(){
 
+Route::get('/dashboard', [AuthController::class, 'showDashboard']);
+
+
 ## KATEGORI #####################
 Route::get('/kategori', [KategoriBukuController::class, 'index']);
 Route::post('/kategori', [KategoriBukuController::class, 'store']);
@@ -44,4 +47,11 @@ Route::post('/buku', [BukuController::class, 'store']);
 Route::put('/buku/{id}', [BukuController::class, 'update']);
 Route::delete('/buku/{id}', [BukuController::class, 'destroy']);
 ## BUKU #####################
+
+## ANGGOTA #####################
+Route::get('/anggota', [AuthController::class, 'showAnggota']);
+Route::put('/anggota/{id}', [AuthController::class, 'updateAnggota']);
+Route::delete('/anggota/{id}', [AuthController::class, 'destroyAnggota']);
+## ANGGOTA #####################
+
 });
