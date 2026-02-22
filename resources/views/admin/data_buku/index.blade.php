@@ -17,6 +17,8 @@
                 <th scope="col">No</th>
                 <th scope="col">Judul Buku</th>
                 <th scope="col">Kategori</th>
+                <th scope="col">Nama Penulis</th>
+                <th scope="col">Tahun Terbit</th>
                 <th scope="col">Stok</th>
                 <th scope="col">Aksi</th>
             </tr>
@@ -27,6 +29,8 @@
                 <th scope="row">{{ $loop->iteration }}</th>
                 <td>{{ $item->judul }}</td>
                 <td>{{ $item->kategoriBuku->nama_kategori ?? 'Tanpa Kategori' }}</td>
+                <td>{{ $item->penerbit }}</td>
+                <td>{{ $item->tahun_penerbit }}</td>
                 <td>{{ $item->stok }}</td>
                 <td>
                     <button class="btn btn-sm btn-warning btn-edit" 

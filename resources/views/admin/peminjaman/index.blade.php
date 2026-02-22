@@ -14,7 +14,9 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Peminjam</th>
-                    <th scope="col">Buku</th>
+                    <th scope="col">Judul Buku</th>
+                    <th scope="col">NIS</th>
+                    <th scope="col">Jurusan</th>
                     <th scope="col">Tanggal Pinjam</th>
                     <th scope="col">Tanggal Kembali</th>
                     <th scope="col">Status</th>
@@ -27,6 +29,8 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $p->user->name }}</td>
                     <td>{{ $p->buku->judul }}</td>
+                    <td>{{ $p->user->nis }}</td>
+                    <td>{{ $p->user->jurusan }}</td>
                     <td>{{ $p->tgl_pinjam }}</td>
                     <td>{{ $p->tgl_kembali ?? '-' }}</td>
                     <td>
