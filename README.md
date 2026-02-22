@@ -77,7 +77,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 7. php artisan serve
 
 ### Shortcut Perintah Artisan
-1. Perintah membuat model+migration+controller+crud 
+1. Perintah membuat model + migration + controller+ crud 
 php artisan make:model NamaModel -mcr
 
 2. Perintah untuk membuat ulang migration
@@ -88,6 +88,12 @@ php artisan db:seed
 
 4. Perintah untuk membuat controller saja dengan fungsi index, store, dll
 php artisan make:controller NamaController --resource
+
+5. Perintah untuk membuat folder laravel
+composer create-project laravel/laravel nama-projek-kamu atau composer create-project laravel/laravel:^12.0 nama-projek-kamu
+
+6. Perintah untuk mengecek versi projek laravel
+php artisan --version
 
 ### Istilah Penting di Laravel
 1. Migration => Membuat dan mengubah struktur tabel.
