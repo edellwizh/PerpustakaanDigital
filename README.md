@@ -64,3 +64,43 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+-------------------------------------------------------------------------
+### Langkah Instalasi
+1. composer -v
+2. composer install
+3. php artisan key:generate
+4. buat file .env dan copy file .env.example 
+5. ganti nama db
+6. php artisan migrate
+7. php artisan serve
+
+### Shortcut Perintah Artisan
+1. Perintah membuat model+migration+controller+crud 
+php artisan make:model NamaModel -mcr
+
+2. Perintah untuk membuat ulang migration
+php artisan migrate:fresh
+
+3. Perintah untuk membuat seeder
+php artisan db:seed
+
+4. Perintah untuk membuat controller saja dengan fungsi index, store, dll
+php artisan make:controller NamaController --resource
+
+### Istilah Penting di Laravel
+1. Migration => Membuat dan mengubah struktur tabel.
+2. Model => Mengambil, menambah, mengedit, dan menghapus data beserta
+menentukan tabel mana yang akan dipakai dan boleh diisi.
+3. Controller => menerima, mengecek, memerintahkan model untuk menyimpan data, dan memberikan hasil ke user.
+4. Middleware => Menentukan arah setelah user login.
+5. Seeder => Membuat sebuah data percobaan.
+6. Blade => tampilan pengguna(view).
+
+### Pengetahuan Tambahan
+Perbedaan menggunakan foreach dan forelse
+- foreach => Jika belum melakukan hal apapun dihalaman itu maka tampilan kosong dan kalau mau menampilkan "Anda belum melakukan ..." maka harus menjalankan fungsi count terlebih dahulu untuk melihat datanya beneran ada atau kosong.
+- foresle => Jika belum melakukan hal apapu dihalaman itu maka tampilan akan menampilkan "Anda belum melakukan ..." dengan menggunakan fungsi @empty yang disediakan dari forelse sendiri.
+
+Fungsi carbon: Untuk mengubah sesuatu supaya enak dibaca pada kasus ini adalah penulisan format tanggal.
