@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * MENAMPILKAN HALAMAN LOGIN
      */
     public function showLogin()
     {
         return view('login.login');
     }
+
+    /**
+     * VALIDASI HALAMAN LOGIN
+     */
 
     public function storeLogin(Request $request)
     {
@@ -29,7 +33,6 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Logika pengalihan berdasarkan Role
             if (Auth::user()->role === 'admin') {
                 return redirect('/admin/dashboard');
             }
@@ -42,24 +45,26 @@ class AuthController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * MENAMPILKAN HALAMAN DAFTAR
      */
     public function showDaftar()
     {
         return view('login.daftar');
     }
 
+    /**
+     * VALIDASI HALAMAN DAFTAR
+     */
     public function storeDaftar(Request $request)
     {
         $validated = $request->validate([
             'email'    => 'required|email|unique:users,email',
             'name'     => 'required',
-            'password' => 'required|min:6|confirmed', // 'confirmed' akan mencari input bernama password_confirmation
+            'password' => 'required|min:6|confirmed', 
             'nis'      => 'required|unique:users,nis',
             'no_telp'  => 'required',
-            'jurusan'  => 'required|not_in:Pilih Jurusan', // Memastikan user tidak memilih opsi default
+            'jurusan'  => 'required|not_in:Pilih Jurusan', 
         ], [
-            // Custom pesan error (Opsional)
             'password.confirmed' => 'Konfirmasi password Anda tidak cocok.',
             'jurusan.required'   => 'Silakan pilih jurusan Anda.',
         ]);
@@ -74,6 +79,9 @@ class AuthController extends Controller
         return back()->with('success', 'Pendaftaran berhasil. Silakan login.');
     }
 
+    /**
+     * MENAMPILKAN HALAMAN DATA ANGGOTA ADMIN
+     */ 
 
     public function showAnggota()
     {
@@ -81,8 +89,12 @@ class AuthController extends Controller
         return view('admin.data_anggota.index', compact('users'));
     }
 
+    /**
+     * EDIT/UPDATE HALAMAN DATA ANGGOTA ADMIN
+     */
+
     public function updateAnggota(Request $request, $id)
-{
+    {
     $request->validate([
         'email'   => 'required|email|unique:users,email,'.$id.',id_user',
         'name'    => 'required',
@@ -95,27 +107,34 @@ class AuthController extends Controller
     $user->update($request->all());
 
     return back()->with('success', "Anggota " . $user->name . " berhasil diperbarui");
+    }
 
-}
+    /**
+     * MENGHAPUS HALAMAN DATA ANGGOTA ADMIN
+     */
     public function destroyAnggota($id)
     {
         User::findOrFail($id)->delete();
         return back()->with('success', 'User berhasil dihapus');
     }
 
-    public function showDashboard()
-{
-    // Mengambil data riil dari database
+    /**
+     * MENAMPILKAN HALAMAN DASHBOARD ADMIN
+     */
+    public function showDashboard(){
     $totalBuku = Buku::count();
     $totalAnggota = User::where('role', 'user')->count();
     $bukuDipinjam = Peminjaman::where('status', 'dipinjam')->count();
 
     return view('admin.dashboard', compact('totalBuku', 'totalAnggota', 'bukuDipinjam'));
-}
+    }
 
+    /**
+     * MENAMPILKAN HALAMAN LOGOUT
+     */
     public function logout(){
         Auth::logout();
         return redirect('/login');
     }
 
-    }
+}

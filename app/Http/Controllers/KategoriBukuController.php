@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class KategoriBukuController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * MENAMPILKAN HALAMAN KATEGORI BUKU 
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class KategoriBukuController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * VALIDASI KATEGORI BUKU
      */
     public function store(Request $request)
     {
@@ -55,7 +55,7 @@ class KategoriBukuController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * EDIT/UPDATE KATEGORI BUKU
      */
     public function update(Request $request, $id)
     {
@@ -71,7 +71,7 @@ class KategoriBukuController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * MENGHAPUS SECARA PERMANEN KATEGORI BUKU
      */
     public function destroy($id)
     {

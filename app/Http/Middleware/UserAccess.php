@@ -21,6 +21,6 @@ class UserAccess
             return $next($request);
         }
 
-        // Jika tidak sesuai, lempar error atau redirect
+        // Jika tidak sesuai
         return response()->json(['Anda tidak memiliki izin untuk mengakses halaman ini.'], 403);    }
 }

@@ -74,8 +74,6 @@ $(document).ready(function() {
 
         $('#edit_jurusan').val(jurusan).trigger('change');
         
-        // Ubah action form agar mengarah ke ID yang benar
-        // Pastikan prefix URL-nya sama dengan di Route (admin/anggota)
         $('#formEdit').attr('action', '{{ url("admin/anggota") }}/' + id_user);
     });
 });

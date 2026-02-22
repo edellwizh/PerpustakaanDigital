@@ -10,15 +10,21 @@ use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
+    /**
+     * MENAMPILKAN HALAMAN KATALOG BUKU
+     */
     public function indexUser()
     {
         $bukus = Buku::with('kategoriBuku')->get();
         $kategori = KategoriBuku::all();  
         return view('user.katalog_buku', compact('bukus', 'kategori'));
     }
- 
+
+    /**
+     * VALIDASI/LOGIKA PEMINJAMAN BUKU
+     */
     public function store(Request $request)
-{
+    {
     $id_user = Auth::id();
     $id_buku = $request->id_buku;
 
@@ -53,6 +59,9 @@ class PeminjamanController extends Controller
     return back()->with('success', 'Buku berhasil dipinjam!');
 }
 
+/**
+     * VALIDASI/LOGIKA KEMBALIKAN BUKU
+     */
     public function kembaliBuku($id)
     {
         $pinjam = Peminjaman::findOrFail($id);
@@ -72,10 +81,11 @@ class PeminjamanController extends Controller
         return back()->with('success', 'Buku telah dikembalikan!');
     }
 
+    /**
+     * MENAMPILKAN HALAMAN BUKU SAYA USER
+     */
     public function bukuSaya()
     {
-        // Karena menggunakan SoftDeletes di Model, data yang di-delete oleh user
-        // otomatis tidak akan tertarik di sini.
         $peminjamans = Peminjaman::with('buku')
             ->where('id_user', Auth::id())
             ->latest()
@@ -84,9 +94,11 @@ class PeminjamanController extends Controller
         return view('user.buku_saya', compact('peminjamans'));
     }
 
+    /**
+     * MENAMPILKAN HALAMAN PEMINJAMAN ADMIN
+     */
     public function indexAdmin()
     {
-        // Menggunakan withTrashed() agar data yang dihapus user tetap muncul di Admin
         $peminjamans = Peminjaman::withTrashed()
             ->with(['user', 'buku'])
             ->latest()
@@ -95,29 +107,33 @@ class PeminjamanController extends Controller
         return view('admin.peminjaman.index', compact('peminjamans'));
     }
 
-
+    /**
+     * MENGHAPUS SECARA PERMAENEN PEMINJAMAN DIHALAMAN TRANSAKSI ADMIN
+     */
     public function destroy($id)
     {
         $peminjaman = Peminjaman::withTrashed()->findOrFail($id);
         
-        // Kembalikan stok jika admin menghapus paksa saat buku masih dipinjam
+        // Kembalikan stok
         if($peminjaman->status == 'dipinjam'){
             $peminjaman->buku->increment('stok');
         }
 
-        // Admin melakukan force delete agar benar-benar hilang dari DB
         $peminjaman->forceDelete();
 
         return back()->with('success', 'Data transaksi berhasil dihapus permanen oleh Admin!');
     }
 
+    /**
+     * MENGHAPUS PEMINJAMAN BUKU SECARA HIDDEN DIHALAMAN BUKU SAYA USER 
+     */
     public function destroyUser($id)
     {
         $peminjaman = Peminjaman::where('id_pinjam', $id)
                             ->where('id_user', Auth::id())
                             ->firstOrFail();
 
-        // Ini hanya akan mengisi kolom deleted_at (data tetap ada di DB)
+        // Ini hanya akan mengisi kolom deleted_at
         $peminjaman->delete();
 
         return back()->with('success', 'Riwayat peminjaman berhasil dihapus dari daftar Anda.');

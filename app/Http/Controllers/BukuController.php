@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class BukuController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * MENAMPILKAN HALAMAN DATA BUKU
      */
     public function index()
     {
@@ -26,7 +26,7 @@ class BukuController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * VALIDASI CREATE BUKU
      */
     public function store(Request $request)
     {
@@ -60,7 +60,7 @@ class BukuController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * UPDATE/EDIT BUKU
      */
     public function update(Request $request, $id)
     {
@@ -79,7 +79,7 @@ class BukuController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     *  MENGHAPUS BUKU SECARA PERMANEN
      */
     public function destroy($id)
     {
