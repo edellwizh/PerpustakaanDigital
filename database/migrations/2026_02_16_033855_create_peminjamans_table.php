@@ -16,13 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_buku');
             $table->date('tgl_pinjam');
-            $table->integer('durasi');
-            $table->date('tgl_kembali');
-            $table->date('tgl_pengembalian_asli')->nullable();
-            $table->enum('status', ['Dipinjam', 'Kembali'])->default('Dipinjam');
-            $table->integer('denda')->default(0);
-            $table->enum('status_denda', ['Tanpa Denda', 'Belum Bayar', 'Lunas'])->default('Tanpa Denda');
+            $table->date('tgl_kembali')->nullable();
+            $table->enum('status', ['dipinjam', 'dikembalikan'])->default('dipinjam');
             $table->timestamps();
+            $table->softDeletes();
 
             // Pastikan kolom id_user di tabel users adalah 'id_user' juga, jika 'id' ganti dibawah ini
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');

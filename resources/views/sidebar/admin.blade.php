@@ -35,7 +35,7 @@
 
             <div class="main">
                 <div class="list-item">
-                    <a href="">
+                    <a href="{{ url('/admin/peminjaman') }}">
                         <i class="bi bi-people icon"></i>
                         <span class="judul-navbar">Transaksi</span>
                     </a>
@@ -45,6 +45,7 @@
             <hr class="garis">
 
             <div class="main">
+                <div class="list-item btn-logout">
                 <form action="{{ url('/logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="list-item btn-logout border-0 w-100 text-start" style="background: none;"  onclick="return confirm('Yakin ingin logout?')">
@@ -52,5 +53,6 @@
                         <span class="judul-navbar text-white">Logout</span>
                     </button>
                 </form>
+                </div>
             </div>
         </div>

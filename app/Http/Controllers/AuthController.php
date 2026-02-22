@@ -33,7 +33,7 @@ class AuthController extends Controller
             if (Auth::user()->role === 'admin') {
                 return redirect('/admin/dashboard');
             }
-            return view('user.katalog_buku');
+            return redirect('/user/katalog-buku');
         }
 
         return back()->withErrors([

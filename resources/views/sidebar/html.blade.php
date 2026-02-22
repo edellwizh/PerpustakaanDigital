@@ -12,7 +12,17 @@
 </head>
 <body>
     <div class="container_css">
-        @include('sidebar.admin') 
+        @auth
+
+            @if (Auth::user()->role === 'admin')
+            <!-- Admin -->
+                @include('sidebar.admin') 
+
+                @else
+                <!-- User -->
+                 @include('sidebar.user') 
+            @endif
+        @endauth
 
         <div class="main-content py-3">
             @yield('content')

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriBukuController;
+use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,7 +23,16 @@ Route::post('/logout', [AuthController::class, 'logout']);
 #############################################
 Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(){
 
+## KATALOG SAYA #####################
+Route::get('/katalog-buku', [PeminjamanController::class, 'indexUser']);
+Route::post('/pinjam', [PeminjamanController::class, 'store']);
+## KATALOG SAYA #####################
 
+## BUKU SAYA #####################
+Route::get('/buku-saya', [PeminjamanController::class, 'bukuSaya']);
+Route::put('/kembali/{id}', [PeminjamanController::class, 'kembaliBuku']);
+Route::delete('/buku-saya/{id}', [PeminjamanController::class, 'destroyUser']);
+## BUKU SAYA #####################
 
 });
 
@@ -32,7 +42,6 @@ Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(
 Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(function(){
 
 Route::get('/dashboard', [AuthController::class, 'showDashboard']);
-
 
 ## KATEGORI #####################
 Route::get('/kategori', [KategoriBukuController::class, 'index']);
@@ -53,5 +62,13 @@ Route::get('/anggota', [AuthController::class, 'showAnggota']);
 Route::put('/anggota/{id}', [AuthController::class, 'updateAnggota']);
 Route::delete('/anggota/{id}', [AuthController::class, 'destroyAnggota']);
 ## ANGGOTA #####################
+
+## PEMINJAMAN #####################
+Route::get('/peminjaman', [PeminjamanController::class, 'indexAdmin']);
+Route::put('/kembali/{id}', [PeminjamanController::class, 'kembaliBuku']);
+Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy']);
+## PEMINJAMAN #####################
+
+
 
 });
