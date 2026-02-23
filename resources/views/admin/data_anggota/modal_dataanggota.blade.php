@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label>Nama Lengkap</label>
-                    <input type="text" name="name" id="edit_name" class="form-control" required>
+                    <input type="text" name="nama_anggota" id="edit_nama_anggota" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Email</label>
@@ -31,8 +31,13 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label>No Telp</label>
-                    <input type="number" name="no_telp" id="edit_no_telp" class="form-control" required>
+                    <label class="form-label">Kelas</label>
+                    <select class="form-select" name="kelas" id="edit_kelas" required>
+                        <option value="">Pilih Kelas</option>
+                        <option value="x">x</option>
+                        <option value="xi">xi</option>
+                        <option value="xii">xii</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">

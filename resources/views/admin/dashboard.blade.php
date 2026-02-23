@@ -6,7 +6,7 @@
        <div class="container-fluid">
              <div class="card">
                 <div class="card-body">
-                    <h4>HI! Selamat Datang  {{ Auth::user()->name }}.</h2>
+                    <h4>HI! Selamat Datang  {{ Auth::user()->nama_anggota }}.</h2>
                     <h6>Semangat Bekerja untuk hari ini.</h6>
                 </div>
                 </div>

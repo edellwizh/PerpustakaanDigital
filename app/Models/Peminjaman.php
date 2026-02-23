@@ -11,16 +11,16 @@ class Peminjaman extends Model
     protected $table = 'peminjamans';
     protected $primaryKey = 'id_pinjam';
     protected $fillable = [
-        'id_user',
-        'id_buku',
+        'user_id',
+        'kode_buku',
         'tgl_pinjam',
         'tgl_kembali',
         'status'
     ];
     public function user(){
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function buku(){
-        return $this->belongsTo(Buku::class, 'id_buku');
+        return $this->belongsTo(Buku::class, 'kode_buku');
     }
 }

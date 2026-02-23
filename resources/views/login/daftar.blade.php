@@ -25,7 +25,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Nama Lengkap</label>
-                    <input type="name" class="form-control" name="name" required>
+                    <input type="name" class="form-control" name="nama_anggota" required>
                 </div>
                 
                 <div class="mb-3">
@@ -44,11 +44,6 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">No Telpon</label>
-                    <input type="number" class="form-control" name="no_telp" required>
-                </div>
-
-                <div class="mb-3">
                 <label for="jurusan" class="form-label">Jurusan</label>
                 <select class="form-select" name="jurusan" required>
                     <option selected>Pilih Jurusan</option>
@@ -56,6 +51,16 @@
                     <option value="tja">Teknik Jaringan Akses</option>
                     <option value="tkj">Teknik Komputer Jaringan</option>
                     <option value="rpl">Rekayasa Perangkat Lunak</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                <label for="kelas" class="form-label">Kelas</label>
+                <select class="form-select" name="kelas" required>
+                    <option selected>Pilih Kelas</option>
+                    <option value="x">x</option>
+                    <option value="xi">xi</option>
+                    <option value="xii">xii</option>
                     </select>
                 </div>
                 

@@ -9,11 +9,11 @@
 
             <div class="d-flex align-items-center mb-3">
             <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; min-width: 50px; font-weight: bold;">
-                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                {{ strtoupper(substr(Auth::user()->nama_anggota, 0, 1)) }}
             </div>
             <div class="ms-3">
-                <h5 class="mb-0">{{ Auth::user()->name }}</h5>
-                <small class="text-muted">{{ Auth::user()->nis }} | {{ Auth::user()->jurusan }} | {{ Auth::user()->no_telp }}</small>
+                <h5 class="mb-0">{{ Auth::user()->nama_anggota }}</h5>
+                <small class="text-muted">{{ Auth::user()->nis }} | {{ Auth::user()->jurusan }} | {{ Auth::user()->kelas }}</small>
             </div>
         </div>
         <p class="mb-0 text-muted fst-italic small">

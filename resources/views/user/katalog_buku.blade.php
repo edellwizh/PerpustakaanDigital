@@ -6,7 +6,7 @@
 <div class="container-fluid py-4">
     <div class="card mb-4">
         <div class="card-body">
-            <h4>HI! Selamat Datang {{ Auth::user()->name }}!</h4>
+            <h4>HI! Selamat Datang {{ Auth::user()->nama_anggota }}!</h4>
             <h6>Siswa jurusan {{ Auth::user()->jurusan }} - Semangat literasi untuk hari ini.</h6>
         </div>
     </div>
@@ -23,7 +23,7 @@
                     <p class="card-text text-truncate">{{ $b->deskripsi ?? 'Tidak ada ringkasan.' }}</p>
                     <p class="mt-auto">Stok: <strong>{{ $b->stok }}</strong></p>
                     
-                    <button type="button" class="btn btn-info w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $b->id_buku }}">
+                    <button type="button" class="btn btn-info w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $b->kode_buku }}">
                         Lihat Detail
                     </button>
                 </div>
@@ -31,7 +31,7 @@
         </div>
 
 <!-- MODAL -->
-        <div class="modal fade" id="modalDetail{{ $b->id_buku }}" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="modalDetail{{ $b->kode_buku }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -42,6 +42,7 @@
                         <h4>{{ $b->judul }}</h4>
                         <hr>
                         <p><strong>Penerbit:</strong> {{ $b->penerbit }}</p>
+                        <p><strong>Pengarang:</strong> {{ $b->pengarang }}</p>
                         <p><strong>Kategori:</strong> {{ $b->kategoriBuku->nama_kategori ?? '-' }}</p>
                         <p><strong>Ringkasan:</strong></p>
                         <p>{{ $b->deskripsi ?? 'Belum ada deskripsi untuk buku ini.' }}</p>
@@ -53,7 +54,7 @@
                         @if($b->stok > 0)
                             <form action="{{ url('user/pinjam') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id_buku" value="{{ $b->id_buku }}">
+                                <input type="hidden" name="kode_buku" value="{{ $b->kode_buku }}">
                                 <button type="submit" class="btn btn-primary">Konfirmasi Pinjam Buku</button>
                             </form>
                         @else

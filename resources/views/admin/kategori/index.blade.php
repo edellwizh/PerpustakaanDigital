@@ -17,6 +17,7 @@
             <thead>
                 <tr>
                 <th scope="col">No</th>
+                <th scope="col">Id Kategori</th>
                 <th scope="col">Nama Kategori</th>
                 <th scope="col">Deskripsi</th>
                 <th scope="col">Aksi</th>
@@ -26,6 +27,7 @@
                 @foreach($kategori as $item)
                 <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->id_kategori }}</td>
                 <td>{{ $item->nama_kategori }}</td>
                 <td>{{ $item->deskripsi }}</td>
                 <td>

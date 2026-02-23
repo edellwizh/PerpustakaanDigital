@@ -25,14 +25,14 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-    $id_user = Auth::id();
-    $id_buku = $request->id_buku;
+    $user_id = Auth::id();
+    $kode_buku = $request->kode_buku;
 
-    $buku = Buku::findOrFail($id_buku);
+    $buku = Buku::findOrFail($kode_buku);
 
     // 1. Cek apakah user sudah meminjam buku yang sama dan belum dikembalikan
-    $sudahPinjam = Peminjaman::where('id_user', $id_user)
-        ->where('id_buku', $id_buku)
+    $sudahPinjam = Peminjaman::where('user_id', $user_id)
+        ->where('kode_buku', $kode_buku)
         ->where('status', 'dipinjam')
         ->exists();
 
@@ -47,8 +47,8 @@ class PeminjamanController extends Controller
 
     // 3. Buat data peminjaman jika lolos validasi
     Peminjaman::create([
-        'id_user' => $id_user, 
-        'id_buku' => $id_buku,
+        'user_id' => $user_id, 
+        'kode_buku' => $kode_buku,
         'tgl_pinjam' => now(),
         'status' => 'dipinjam'
     ]);
@@ -74,7 +74,7 @@ class PeminjamanController extends Controller
             ]);
 
             // 2. Tambah kembali stok buku
-            Buku::where('id_buku', $pinjam->id_buku)->increment('stok');
+            Buku::where('kode_buku', $pinjam->kode_buku)->increment('stok');
             return back()->with('success', 'Buku berhasil dikembalikan!');
         }
 
@@ -87,7 +87,7 @@ class PeminjamanController extends Controller
     public function bukuSaya()
     {
         $peminjamans = Peminjaman::with('buku')
-            ->where('id_user', Auth::id())
+            ->where('user_id', Auth::id())
             ->latest()
             ->get();
 
@@ -100,7 +100,7 @@ class PeminjamanController extends Controller
     public function indexAdmin()
     {
         $peminjamans = Peminjaman::withTrashed()
-            ->with(['user', 'buku'])
+            ->with(['user', 'buku.kategoriBuku'])
             ->latest()
             ->get();
             
@@ -130,7 +130,7 @@ class PeminjamanController extends Controller
     public function destroyUser($id)
     {
         $peminjaman = Peminjaman::where('id_pinjam', $id)
-                            ->where('id_user', Auth::id())
+                            ->where('user_id', Auth::id())
                             ->firstOrFail();
 
         // Ini hanya akan mengisi kolom deleted_at

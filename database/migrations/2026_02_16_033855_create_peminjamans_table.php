@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('peminjamans', function (Blueprint $table) {
             $table->id('id_pinjam');
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_buku');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('kode_buku');
             $table->date('tgl_pinjam');
             $table->date('tgl_kembali')->nullable();
             $table->enum('status', ['dipinjam', 'dikembalikan'])->default('dipinjam');
             $table->timestamps();
             $table->softDeletes();
 
-            // Pastikan kolom id_user di tabel users adalah 'id_user' juga, jika 'id' ganti dibawah ini
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
-            $table->foreign('id_buku')->references('id_buku')->on('bukus')->onDelete('cascade');
+            // Pastikan kolom user_id di tabel users adalah 'user_id' juga, jika 'id' ganti dibawah ini
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('kode_buku')->references('kode_buku')->on('bukus')->onDelete('cascade');
         });
     }
 

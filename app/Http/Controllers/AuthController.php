@@ -59,10 +59,10 @@ class AuthController extends Controller
     {
         $validated = $request->validate([
             'email'    => 'required|email|unique:users,email',
-            'name'     => 'required',
+            'nama_anggota'     => 'required',
             'password' => 'required|min:6|confirmed', 
             'nis'      => 'required|unique:users,nis',
-            'no_telp'  => 'required',
+            'kelas'  => 'required',
             'jurusan'  => 'required|not_in:Pilih Jurusan', 
         ], [
             'password.confirmed' => 'Konfirmasi password Anda tidak cocok.',
@@ -96,17 +96,17 @@ class AuthController extends Controller
     public function updateAnggota(Request $request, $id)
     {
     $request->validate([
-        'email'   => 'required|email|unique:users,email,'.$id.',id_user',
-        'name'    => 'required',
-        'nis'     => 'required|unique:users,nis,'.$id.',id_user',
-        'no_telp' => 'required',
+        'email'   => 'required|email|unique:users,email,'.$id.',user_id',
+        'nama_anggota'    => 'required',
+        'nis'     => 'required|unique:users,nis,'.$id.',user_id',
+        'kelas' => 'required',
         'jurusan' => 'required', 
     ]);
 
     $user = User::findOrFail($id);
     $user->update($request->all());
 
-    return back()->with('success', "Anggota " . $user->name . " berhasil diperbarui");
+    return back()->with('success', "Anggota " . $user->nama_anggota . " berhasil diperbarui");
     }
 
     /**

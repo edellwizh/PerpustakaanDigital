@@ -23,10 +23,10 @@ Route::post('/logout', [AuthController::class, 'logout']);
 #############################################
 Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(){
 
-## KATALOG SAYA #####################
+## KATALOG BUKU #####################
 Route::get('/katalog-buku', [PeminjamanController::class, 'indexUser']);
 Route::post('/pinjam', [PeminjamanController::class, 'store']);
-## KATALOG SAYA #####################
+## KATALOG BUKU #####################
 
 ## BUKU SAYA #####################
 Route::get('/buku-saya', [PeminjamanController::class, 'bukuSaya']);
@@ -53,8 +53,8 @@ Route::delete('/kategori/{id}', [KategoriBukuController::class, 'destroy']);
 ## BUKU #####################
 Route::get('/buku', [BukuController::class, 'index']);
 Route::post('/buku', [BukuController::class, 'store']);
-Route::put('/buku/{id}', [BukuController::class, 'update']);
-Route::delete('/buku/{id}', [BukuController::class, 'destroy']);
+Route::put('/buku/{kode_buku}', [BukuController::class, 'update']);
+Route::delete('/buku/{kode_buku}', [BukuController::class, 'destroy']);
 ## BUKU #####################
 
 ## ANGGOTA #####################

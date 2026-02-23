@@ -26,6 +26,10 @@
                     <input type="text" name="penerbit" class="form-control" required>
                 </div>
                 <div class="mb-3">
+                    <label>Pengarang</label>
+                    <input type="text" name="pengarang" class="form-control" required>
+                </div>
+                <div class="mb-3">
                     <label>Tahun Terbit</label>
                     <input type="date" name="tahun_penerbit" class="form-control" required>
                 </div>
@@ -70,6 +74,10 @@
                 <div class="mb-3">
                     <label>Penerbit</label>
                     <input type="text" name="penerbit" id="edit_penerbit" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Pengarang</label>
+                    <input type="text" name="pengarang" id="edit_pengarang" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Tahun Terbit</label>

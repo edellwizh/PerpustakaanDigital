@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Buku extends Model
 {
     protected $table = 'bukus';
-    protected $primaryKey = 'id_buku';
+    protected $primaryKey = 'kode_buku';
 
     protected $fillable = [
         'id_kategori',
         'judul',
         'penerbit',
+        'pengarang',
         'tahun_penerbit',
         'stok',
         'deskripsi'

@@ -34,6 +34,7 @@ class BukuController extends Controller
             'id_kategori' => 'required',
             'judul' => 'required',
             'penerbit' => 'required',
+            'pengarang' => 'required',
             'tahun_penerbit' => 'required|date',
             'stok' => 'required|numeric',
             'deskripsi' => 'required'
@@ -68,6 +69,7 @@ class BukuController extends Controller
             'id_kategori' => 'required',
             'judul' => 'required',
             'penerbit' => 'required',
+            'pengarang' => 'required',
             'tahun_penerbit' => 'required|date',
             'stok' => 'required|numeric',
             'deskripsi' => 'required'
