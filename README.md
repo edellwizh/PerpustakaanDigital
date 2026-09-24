@@ -1,112 +1,29 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Perpustakaan Digital (Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyek ini adalah **Aplikasi Perpustakaan Digital** yang saya bangun sebagai proyek **Ujian Praktik (UKK)** sekolah menggunakan *framework* **Laravel**. 
 
-## About Laravel
+Dalam pengerjaannya, saya menerapkan pendekatan *vibe coding*—berfokus pada eksperimen cepat, penyelesaian masalah, dan pemahaman alur kerja/arsitektur sistem (*framework*) secara menyeluruh seperti pola MVC, relasi database, dan sistem *routing*.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> 💡 **Catatan Perjalanan:** Melalui proyek ini, saya berhasil memahami gambaran besar alur pembangunan aplikasi web (*Full-Stack*). Pengalaman mengerjakan proyek Laravel ini juga menjadi titik balik penting yang menyadarkan saya bahwa saya kurang cocok dengan PHP, dan memutuskan untuk mengalihkan fokus belajar saya ke **Python**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur Utama
 
-## Learning Laravel
+- **Autentikasi Multi-role:**
+  - **Admin:** Mengelola data pengguna (petugas/peminjam), kategori, dan laporan.
+  - **Petugas:** Mengelola proses peminjaman dan pengembalian buku.
+  - **anggota:** Mencari dan meminjam buku.
+- **Katalog & Stok Buku:** Pengelompokan buku berdasarkan kategori beserta manajemen jumlah stok.
+- **Sistem Peminjaman:** Pencatatan otomatis tanggal pinjam, batas pengembalian, dan status buku.
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Teknologi & Konsep yang Dipelajari
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-
--------------------------------------------------------------------------
-### Langkah Instalasi
-1. composer -v
-2. composer install
-3. php artisan key:generate
-4. buat file .env dan copy file .env.example 
-5. ganti nama db
-6. php artisan migrate
-7. php artisan serve
-
-### Shortcut Perintah Artisan
-1. Perintah membuat model + migration + controller+ crud 
-php artisan make:model NamaModel -mcr
-
-2. Perintah untuk membuat ulang migration
-php artisan migrate:fresh
-
-3. Perintah untuk membuat seeder
-php artisan db:seed
-
-4. Perintah untuk membuat controller saja dengan fungsi index, store, dll
-php artisan make:controller NamaController --resource
-
-5. Perintah untuk membuat folder laravel
-composer create-project laravel/laravel nama-projek-kamu atau composer create-project laravel/laravel:^12.0 nama-projek-kamu
-
-6. Perintah untuk mengecek versi projek laravel
-php artisan --version
-
-### Istilah Penting di Laravel
-1. Migration => Membuat dan mengubah struktur tabel.
-2. Model => Mengambil, menambah, mengedit, dan menghapus data beserta
-menentukan tabel mana yang akan dipakai dan boleh diisi.
-3. Controller => menerima, mengecek, memerintahkan model untuk menyimpan data, dan memberikan hasil ke user.
-4. Middleware => Menentukan arah setelah user login.
-5. Seeder => Membuat sebuah data percobaan.
-6. Blade => tampilan pengguna(view).
-
-### Pengetahuan Tambahan
-Perbedaan menggunakan foreach dan forelse
-- foreach => Jika belum melakukan hal apapun dihalaman itu maka tampilan kosong dan kalau mau menampilkan "Anda belum melakukan ..." maka harus menjalankan fungsi count terlebih dahulu untuk melihat datanya beneran ada atau kosong.
-- foresle => Jika belum melakukan hal apapu dihalaman itu maka tampilan akan menampilkan "Anda belum melakukan ..." dengan menggunakan fungsi @empty yang disediakan dari forelse sendiri.
-
-Fungsi carbon: Untuk mengubah sesuatu supaya enak dibaca pada kasus ini adalah penulisan format tanggal.
+- **Framework:** Laravel
+- **Bahasa:** PHP, HTML, CSS
+- **Database:** MySQL/ phpMyAdmin
+- **Konsep Arsitektur:**
+  - Pola **MVC** (*Model-View-Controller*)
+  - Pengelolaan relasi antar-tabel 
+  - Pengamanan hak akses menggunakan **Middleware** & *Session*
